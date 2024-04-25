@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import foodRouter from "./routes/food.routes.js";
 import { connectDB } from "./config/db.js";
+import foodRouter from "./routes/food.routes.js";
+import userRouter from "./routes/user.routes.js";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ connectDB();
 // api endpoints
 app.use("/api/food", foodRouter);
 app.use("/images", express.static("uploads"));
+app.use("/api/user", userRouter);
 
 app.listen(port, () =>
   console.log(`server is running on http://localhost:${port}`)
